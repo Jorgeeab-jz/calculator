@@ -1,9 +1,17 @@
+const calcCase = document.querySelector('.case');
+const body = document.querySelector('body');
 const display = document.getElementById('display');
 const resultDisplay = document.getElementById('result');
 const buttons = document.querySelectorAll('.btn');
 const backSpaceBtn = document.getElementById('back-space');
 const operators = document.querySelectorAll('.operator');
 const equalBtn = document.getElementById('equal-btn');
+const pwrBtn = document.querySelector('.on-off-btn');
+const screen = document.querySelector('.screen');
+const resultScrn = document.querySelector('.result');
+const darkBtn = document.querySelector('.dark-btn');
+let darkCheck = false;
+let power = false;
 let operatorCheck = false;
 let resultCheck = false;
 let signCheck = false;
@@ -41,12 +49,14 @@ function storeNumber(){
 function typeNumber(){
     buttons.forEach(button => {
         button.addEventListener('click', function(){
-            if(operatorCheck){
-                clearDisplay();
-            }
-            if(display.textContent.length < 13){
-                display.textContent += button.textContent;
-                operatorCheck = false;
+            if(power){
+                if(operatorCheck){
+                    clearDisplay();
+                }
+                if(display.textContent.length < 13){
+                    display.textContent += button.textContent;
+                    operatorCheck = false;
+                }
             }
         })
     })
@@ -54,7 +64,8 @@ function typeNumber(){
 function typeOperator(){
     operators.forEach(operatorBtn => {
         operatorBtn.addEventListener('click',function(){
-            storeNumber();
+            if(power){
+                 storeNumber();
             if(!operatorCheck){
                 operate();
             }
@@ -63,8 +74,9 @@ function typeOperator(){
             display.textContent = operatorBtn.textContent;
             operatorCheck = true;
             operator = operatorBtn.textContent;
+            }
+            })
         })
-    })
 }
 function backSpace(){
     display.textContent = display.textContent.slice(0,-1)
@@ -133,12 +145,27 @@ function signChange(){
     signCheck = !signCheck;
 }
 function addDot(){
-    let dotFinder = display.textContent.search(/\./);
+    if(power){
+        let dotFinder = display.textContent.search(/\./);
     if(dotFinder == -1){
         display.textContent += '.';
     }
+    }
     
 }
+pwrBtn.addEventListener('click',function(){
+    if(!power){
+        pwrBtn.style.cssText = 'text-shadow: 0 0 3px #4cd137; color: #4cd137;';
+        screen.style.background = '#33d9b2';
+        resultScrn.style.background = '#218c74';
+    }else{
+        pwrBtn.style.cssText = 'text-shadow: 0 0 0; color: black;';
+        screen.style.background = 'rgba(10,10,10,1)';
+        resultScrn.style.background = 'rgba(0,0,0,0.8)';
+    }
+    power = !power;
+    clearAll();
+})
 backSpaceBtn.addEventListener('click',backSpace);
 equalBtn.addEventListener('click', function(){
     storeNumber();
@@ -147,5 +174,24 @@ equalBtn.addEventListener('click', function(){
     operatorCheck = true;
     resultDisplay.textContent = '';
 })
+darkBtn.addEventListener('click', function(){
+    const allBtns = document.querySelectorAll('.ld');
+    if(!darkCheck){
+        allBtns.forEach(btn => {
+            btn.style.color = 'white';
+        })
+        calcCase.style.background = 'rgba(0,0,0,0.6)';
+        body.style.background = 'rgba(0,0,0,0.8)';
+        darkCheck = true;
+    }else{
+        allBtns.forEach(btn => {
+            btn.style.color = 'black';
+        })
+        calcCase.style.background = 'rgba(0,0,0,0.05)';
+        body.style.background = 'white';
+        darkCheck = false;
+    }
+})
+
 typeNumber()
 typeOperator()
