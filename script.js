@@ -1,3 +1,4 @@
+///////////////////////////// All the references to buttons and screen
 const calcCase = document.querySelector('.case');
 const body = document.querySelector('body');
 const display = document.getElementById('display');
@@ -12,6 +13,7 @@ const resultScrn = document.querySelector('.result');
 const darkBtn = document.querySelector('.dark-btn');
 const smartBtn = document.querySelector('.smart-btn');
 const dumbBtn = document.querySelector('.dumb-btn');
+///////////////////////////// Variables for buttons to change
 let smartCheck = true;
 let darkCheck = false;
 let power = false;
@@ -23,17 +25,17 @@ let operator;
 let num1;
 let num2;
 let result;
-
+/////////////////////////////
 function displayResult(target){
    if(result){
     target.textContent = result;
 }
 }
-function clearDisplay(){
+function clearDisplay(){ //Clears the screen
     display.textContent = ''
     signCheck = false;
 }
-function clearAll(){
+function clearAll(){//Clears all data
     clearDisplay();
     resultDisplay.textContent = ''
     num1 = undefined;
@@ -42,7 +44,7 @@ function clearAll(){
     operatorCheck = false;
     resultCheck = false;
 }
-function storeNumber(){
+function storeNumber(){//Stores the string on screen as a number
     if(!num1){
         num1 = Number(display.textContent);
     }else{
@@ -85,7 +87,7 @@ function backSpace(){
     display.textContent = display.textContent.slice(0,-1)
     number = Number(display.textContent);
 }
-//////////////////////// Operations
+///////////////////////////// Operations
 function add(n1,n2){
     if(smartCheck){
         return n1 + n2;
@@ -114,7 +116,7 @@ function divide(n1,n2){
         return n1 / (n2 - (Math.floor(Math.random() * n2)))
     }
 }   
-////////////////////////
+/////////////////////////////
 function operate(){
     if(num2 === 0){
         
@@ -155,7 +157,7 @@ function operate(){
         }
     }
 }
-function signChange(){
+function signChange(){//Adds or delete '-' sign for negative numbers
     if(!signCheck){
         display.textContent = '-' + display.textContent;
     }else{
@@ -163,7 +165,7 @@ function signChange(){
     }
     signCheck = !signCheck;
 }
-function addDot(){
+function addDot(){//Adds a dot if there isn't one yet
     if(power){
         if(operatorCheck){
             clearDisplay();
