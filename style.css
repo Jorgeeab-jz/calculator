@@ -30,37 +30,53 @@ body {
 .buttons {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
+    background: rgba(0,0,0,0.08);
     width: 80%;
     height: 400px;
     margin: auto;
     margin-top: 0%;
+    border-radius: 10px;
+    overflow: hidden;
 }
 .extra-buttons{
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    border: 1px solid white;
     border-radius: 10px;
     width: 80%;
     margin: auto;
     height: 50px;
     margin-bottom: 0%;
+    overflow: hidden;
+}
+.extra-buttons button{
+    font-size: 30px;
+    border: none;
+    outline: none;
+    background: rgba(0,0,0,0);
 }
 .numbers {
-    border: 1px solid blue;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(4,1fr);
 }
 .numbers button{
-    font-size: 20px;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    background: rgba(0,0,0,0);
 }
 .operators{
     display: grid;
     grid-template-rows: 1fr,1fr,3fr;
-    border: 1px solid yellow
+}
+.operators button{
+    font-size: 30px;
+    border: none;
+    outline: none;
+    background: rgba(0,0,0,0);
 }
 .switchs{
-    border: 1px solid green;
+    
 }
 .result{
     margin: auto;
@@ -82,4 +98,8 @@ body {
     margin-top: 10px;
     text-align: right;
     font-size: 45px;
+}
+#equal-btn{
+    height: 200px;
+    margin-bottom: -63px;
 }
