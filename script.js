@@ -13,6 +13,7 @@ const resultScrn = document.querySelector('.result');
 const darkBtn = document.querySelector('.dark-btn');
 const smartBtn = document.querySelector('.smart-btn');
 const dumbBtn = document.querySelector('.dumb-btn');
+const numKeys = document.querySelector('.numbers');
 ///////////////////////////// Variables for buttons to change
 let smartCheck = true;
 let darkCheck = false;
@@ -51,37 +52,64 @@ function storeNumber(){//Stores the string on screen as a number
         num2 = Number(display.textContent);
 }
 }
-function typeNumber(){
+function typeNumber(btn){
+    if(power){
+        if(operatorCheck){
+            clearDisplay();
+        }
+        if(display.textContent.length < 13){
+            display.textContent += btn.textContent;
+            operatorCheck = false;
+        }
+    }
+}
+function setNumberBtn(){ //Adds click and keyboard access to number buttons
     buttons.forEach(button => {
         button.addEventListener('click', function(){
-            if(power){
-                if(operatorCheck){
-                    clearDisplay();
-                }
-                if(display.textContent.length < 13){
-                    display.textContent += button.textContent;
-                    operatorCheck = false;
-                }
+            typeNumber(button);
+    })
+    })
+    buttons.forEach(button => {
+        document.addEventListener('keydown', function(e){
+            if(e.key === button.textContent){
+                typeNumber(button);
             }
         })
     })
 }
-function typeOperator(){
+function typeOperator(btn){
+    if(power){
+        storeNumber();
+   if(!operatorCheck){
+       operate();
+   }
+   displayResult(resultDisplay);
+   clearDisplay();
+   display.textContent = btn.textContent;
+   operatorCheck = true;
+   operator = btn.textContent;
+   }
+}
+function setOperatorBtn(){//Adds click and keyboard access to operator buttons
     operators.forEach(operatorBtn => {
         operatorBtn.addEventListener('click',function(){
-            if(power){
-                 storeNumber();
-            if(!operatorCheck){
-                operate();
-            }
-            displayResult(resultDisplay);
-            clearDisplay();
-            display.textContent = operatorBtn.textContent;
-            operatorCheck = true;
-            operator = operatorBtn.textContent;
-            }
+           typeOperator(operatorBtn);
             })
         })
+    operators.forEach(operatorBtn => {
+        document.addEventListener('keydown', (e) => {
+            if(e.key === operatorBtn.textContent){
+               typeOperator(operatorBtn);
+            }
+        })
+    })
+}
+function setEquals(){//Displays final result
+    storeNumber();
+    operate();
+    displayResult(display);
+    operatorCheck = true;
+    resultDisplay.textContent = '';
 }
 function backSpace(){
     display.textContent = display.textContent.slice(0,-1)
@@ -119,7 +147,7 @@ function divide(n1,n2){
 /////////////////////////////
 function operate(){
     if(num2 === 0){
-        
+        display.textContent = "plsDon't"
     }
     if(!result && num1 && num2){
         switch(operator){
@@ -131,7 +159,7 @@ function operate(){
             result = substract(num1,num2);
             break;
 
-            case 'x':
+            case '*':
             result = multipy(num1,num2);
             break;
 
@@ -148,7 +176,7 @@ function operate(){
             result = substract(result,num2);
             break;
 
-            case 'x':
+            case '*':
             result = multipy(result,num2);
             break;
 
@@ -192,13 +220,7 @@ pwrBtn.addEventListener('click',function(){
     clearAll();
 })
 backSpaceBtn.addEventListener('click',backSpace);
-equalBtn.addEventListener('click', function(){
-    storeNumber();
-    operate();
-    displayResult(display);
-    operatorCheck = true;
-    resultDisplay.textContent = '';
-})
+equalBtn.addEventListener('click', setEquals);
 darkBtn.addEventListener('click', function(){
     const allBtns = document.querySelectorAll('.ld');
     if(!darkCheck){
@@ -231,5 +253,19 @@ dumbBtn.addEventListener('click',function(){
     smartBtn.style.color = 'white';
     smartBtn.style.textShadow = '0 0 0px white';
 })
-typeNumber()
-typeOperator()
+document.addEventListener('keydown', function(e){
+    e.preventDefault();
+    switch(e.key){
+        case 'Enter':
+            setEquals();
+            break;
+        case 'Backspace':
+            backSpace();
+            break;
+        case '.':
+            addDot();
+    }
+})
+setNumberBtn();
+setOperatorBtn();
+
