@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6a6f102d22.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calc-container">
+        <div class="case">
+            <div class="screen">
+                <div class="result">
+                    <p id="result"></p>
+                </div>
+                <div class="display">
+                    <p id="display"></p>
+                </div>
+            </div>
+            <div class="extra-buttons">
+                <button id="back-space">BS</button>
+                <button onclick="clearAll()">CA</button>
+                <button class="operator" id="mult">x</button>
+                <button class="operator" id="div">/</button>
+            </div>
+            <div class="buttons">
+                <div class="switchs">
+                    <div class="on-off">
+                        <button class="on-off-btn"></button>
+                    </div>
+                    <div class="smart-toggle"></div>
+                    <div class="dark-mode"></div>
+                </div>
+                <div class="numbers">
+                    <button class="btn" id="one">1</button>
+                    <button class="btn" id="two">2</button>
+                    <button class="btn" id="three">3</button>
+                    <button class="btn" id="four">4</button>
+                    <button class="btn" id="five">5</button>
+                    <button class="btn" id="six">6</button>
+                    <button class="btn" id="seven">7</button>
+                    <button class="btn" id="eight">8</button>
+                    <button class="btn" id="nine">9</button>
+                    <button onclick="addDot()" id="dot">.</button>
+                    <button class="btn" id="zero">0</button>
+                    <button onclick="signChange()" id="sign">+/-</button>
+                </div>
+                <div class="operators">
+                    <button class="operator" id="add">+</button>
+                    <button class="operator" id="subs">-</button>
+                    <button id="equal-btn" class="equal">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
