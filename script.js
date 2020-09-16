@@ -154,6 +154,7 @@ function addDot(){
         let dotFinder = display.textContent.search(/\./);
         if(dotFinder == -1){
         display.textContent += '.';
+        operatorCheck = false;
     }
     }
     
