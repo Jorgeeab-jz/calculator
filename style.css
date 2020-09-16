@@ -136,12 +136,14 @@ button:active{
     border-radius: 15px;
 }
 .smart-toggle button{
-    color: white;
     font-size: 20px;
 }
 .smart-btn{
     color: #7efff5;
     text-shadow: 0 0 5px #18dcff;
+}
+.dumb-btn{
+    color: white;
 }
 .dark-mode{
     margin: auto;
