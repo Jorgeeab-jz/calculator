@@ -12,6 +12,7 @@ const resultScrn = document.querySelector('.result');
 const darkBtn = document.querySelector('.dark-btn');
 const smartBtn = document.querySelector('.smart-btn');
 const dumbBtn = document.querySelector('.dumb-btn');
+let smartCheck = true;
 let darkCheck = false;
 let power = false;
 let operatorCheck = false;
@@ -86,17 +87,33 @@ function backSpace(){
 }
 //////////////////////// Operations
 function add(n1,n2){
-    return n1 + n2;
+    if(smartCheck){
+        return n1 + n2;
+    }else{
+        return n1 + (n2 - (Math.floor(Math.random() * n2)));
+    }
 }
 function substract(n1,n2){
-    return n1 - n2;
+    if(smartCheck){
+        return n1 - n2;
+    }else{
+        return n1 - (n2 - (Math.floor(Math.random() * n2)));
+    }
 }
 function multipy(n1,n2){
-    return n1 * n2;
+    if(smartCheck){
+        return n1 * n2;
+    }else{
+        return n1 * (n2 - (Math.floor(Math.random() * n2)));
+    }
 }
 function divide(n1,n2){
-    return n1 / n2;
-}
+    if(smartCheck){
+        return n1 / n2;
+    }else{
+        return n1 / (n2 - (Math.floor(Math.random() * n2)))
+    }
+}   
 ////////////////////////
 function operate(){
     if(num2 === 0){
@@ -198,6 +215,19 @@ darkBtn.addEventListener('click', function(){
         darkCheck = false;
     }
 })
-
+smartBtn.addEventListener('click',function(){
+    smartCheck = true;
+    smartBtn.style.color = '#7efff5';
+    smartBtn.style.textShadow = '0 0 5px #18dcff';
+    dumbBtn.style.color = 'white';
+    dumbBtn.style.textShadow = '0 0 0px white';
+})
+dumbBtn.addEventListener('click',function(){
+    smartCheck = false;
+    dumbBtn.style.color = '#fffa65';
+    dumbBtn.style.textShadow = '0 0 5px #fff200';
+    smartBtn.style.color = 'white';
+    smartBtn.style.textShadow = '0 0 0px white';
+})
 typeNumber()
 typeOperator()

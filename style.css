@@ -139,6 +139,10 @@ button:active{
     color: white;
     font-size: 20px;
 }
+.smart-btn{
+    color: #7efff5;
+    text-shadow: 0 0 5px #18dcff;
+}
 .dark-mode{
     margin: auto;
 }
