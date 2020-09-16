@@ -1,8 +1,14 @@
 *{
-    font-family: 'Squada One', cursive;
+    font-family: 'Squada One', sans-serif;
 }
 body {
     background: rgba(0,0,0,0.05);
+}
+.box{
+    position:relative;
+	width:600px;
+	height:300px;
+	margin:0 auto 0 auto;
 }
 .calc-container {
     margin: auto;
@@ -11,11 +17,13 @@ body {
     margin: auto;
     display: grid;
     grid-template-rows: auto auto;
-    border: 1px solid black;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
     border-radius: 20px;
     width: 500px;
     height: 700px;
     margin-top: 30px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.3);
 }
 .screen {
     border: 4px solid black;
@@ -30,7 +38,6 @@ body {
 .buttons {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    background: rgba(0,0,0,0.08);
     width: 80%;
     height: 400px;
     margin: auto;
@@ -51,19 +58,28 @@ body {
 .extra-buttons button{
     font-size: 30px;
     border: none;
+    border-radius: 10px;
     outline: none;
     background: rgba(0,0,0,0);
+}
+.extra-buttons button:hover{
+    background: rgba(0,0,0,0.3);
 }
 .numbers {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(4,1fr);
+    border-radius: 15px;
 }
 .numbers button{
     font-size: 30px;
-    border: none;
     outline: none;
+    border: none;
+    border-radius: 10px;
     background: rgba(0,0,0,0);
+}
+.numbers button:hover{
+    background: rgba(0,0,0,0.3);
 }
 .operators{
     display: grid;
@@ -73,10 +89,47 @@ body {
     font-size: 30px;
     border: none;
     outline: none;
+    border-radius: 10px;
     background: rgba(0,0,0,0);
 }
+.operators button:hover{
+    background: rgba(0,0,0,0.3);
+}
 .switchs{
-    
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    border-radius: 15px;
+}
+.switchs button{
+    background: rgba(0,0,0,0);
+    border: none;
+    outline: none;
+}
+.on-off{
+    margin: auto;
+    padding: 0%;
+}
+.on-off-btn{
+    margin: auto;
+    width: max-content;
+    font-size: 25px;
+}
+.smart-toggle{
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    background: rgba(0,0,0,0.5);
+    border-radius: 15px;
+}
+.smart-toggle button{
+    color: white;
+    font-size: 20px;
+}
+.dark-mode{
+    margin: auto;
+}
+.dark-mode button{
+    margin: auto;
+    font-size: 40px;
 }
 .result{
     margin: auto;
@@ -102,4 +155,7 @@ body {
 #equal-btn{
     height: 200px;
     margin-bottom: -63px;
+    border-radius: 15px;
+    background: #e84118;
+    color: white;
 }
