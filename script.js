@@ -10,6 +10,8 @@ const pwrBtn = document.querySelector('.on-off-btn');
 const screen = document.querySelector('.screen');
 const resultScrn = document.querySelector('.result');
 const darkBtn = document.querySelector('.dark-btn');
+const smartBtn = document.querySelector('.smart-btn');
+const dumbBtn = document.querySelector('.dumb-btn');
 let darkCheck = false;
 let power = false;
 let operatorCheck = false;
@@ -82,7 +84,7 @@ function backSpace(){
     display.textContent = display.textContent.slice(0,-1)
     number = Number(display.textContent);
 }
-//////////////////////// Opertions
+//////////////////////// Operations
 function add(n1,n2){
     return n1 + n2;
 }
@@ -146,8 +148,11 @@ function signChange(){
 }
 function addDot(){
     if(power){
+        if(operatorCheck){
+            clearDisplay();
+        }
         let dotFinder = display.textContent.search(/\./);
-    if(dotFinder == -1){
+        if(dotFinder == -1){
         display.textContent += '.';
     }
     }

@@ -67,7 +67,7 @@ body {
     background: rgba(0,0,0,0);
 }
 .extra-buttons button:hover{
-    background: rgba(0,0,0,0.3);
+    background: #e84118;
     transition: none;
 }
 .numbers {
@@ -84,7 +84,7 @@ body {
     background: rgba(0,0,0,0);
 }
 .numbers button:hover{
-    background: rgba(0,0,0,0.3);
+    background:#e84118;
     transition: 0s;
 }
 .operators{
@@ -99,7 +99,7 @@ body {
     background: rgba(0,0,0,0);
 }
 .operators button:hover{
-    background: rgba(0,0,0,0.3);
+    background: #e84118;
     transition: 0s;
 }
 .switchs{
