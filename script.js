@@ -28,7 +28,7 @@ let num2;
 let result;
 /////////////////////////////
 function displayResult(target){
-   if(result){
+   if(result !== undefined){
     target.textContent = result;
 }
 }
@@ -149,7 +149,7 @@ function operate(){
     if(num2 === 0){
         display.textContent = "plsDon't"
     }
-    if(!result && num1 && num2){
+    if(result == undefined && num1 && num2){
         switch(operator){
             case '+':
             result = add(num1,num2);
@@ -166,7 +166,7 @@ function operate(){
             case '/':
             result = divide(num1,num2);
         }
-    }else if(result){
+    }else if(result !== undefined){
         switch(operator){
             case '+':
             result = add(result,num2);
